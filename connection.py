@@ -30,8 +30,8 @@ class Connection(object):
         self.url = url if url else URL
         self.client = Client(self.url)
 
-    def add_contact(self, email, nome, listas, nascimento=None,
-                    celular=None, campos_adicionais=None):
+    def add_contact(self, email, nome, listas, nascimento="?",
+                    celular="?", campos_adicionais=None):
         """
         Add a new contact to some list(s) to send emails
         params:
