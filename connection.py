@@ -79,17 +79,15 @@ class Connection(object):
             complex_type.manterLista = data.get("manter_lista", True)
             listas = []
             # add lists
-            for lista in data.get("listas", []):
-                lista_ = self.client.factory\
-                    .create("AdicionaAtualizaContatoListasDados")
-                lista_.listaId = data.get("listaId")
-                listas.append(lista_)
+            for lista in data.get("listas", []):            
+                lista_ = self.client.factory.create("AdicionaAtualizaContatoListasDados")
+                lista_.listaId = lista
+                listas.append(lista_)            
             complex_type.listas = listas
             # add fields
             campos = []
             for key, value in data.get("campos", {}).items():
-                campos_ = self.client.factory\
-                    .create("AdicionaAtualizaContatoCamposDados")
+                campos_ = self.client.factory.create("AdicionaAtualizaContatoCamposDados")
                 campos_.tag = key
                 campos_.valor = value
                 campos.append(campos_)
